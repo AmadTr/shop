@@ -1,0 +1,19 @@
+{
+    "name": "amad/shop",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "shop\\": "src/model"
+        }
+    },
+    "authors": [
+        {
+            "name": "Amad",
+            "email": "amadou.traoredev@gmail.com"
+        }
+    ],
+    "require": {}
+}
