@@ -27,7 +27,8 @@
                         <a class="nav-link" href="index.php?action=showProds">PRODUIT</a>
                     </li>
  <?php  
-
+session_status();
+var_dump($_SESSION['id']);
     if (isset($_SESSION['id'])) {
         
         

@@ -1,4 +1,5 @@
 <?php
+session_status();
 ob_start();
 $titre = 'Produits'
 
