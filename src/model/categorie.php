@@ -83,7 +83,7 @@ function updateCategorie($id,$name){
         $req = $bdd->prepare($sql);
         $req->bindValue(':name', $name, PDO::PARAM_STR);
         $req->bindValue(':id', $id, PDO::PARAM_INT);
-        $ret = $req->execute();
+        $rep = $req->execute();
     }
     catch (PDOException $ex) {
         var_dump("Erreur UPDATE CATEGORIE: {$ex->getMessage()}");

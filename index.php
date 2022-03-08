@@ -1,15 +1,17 @@
 <?php
-session_start();
+
     // require "model/dbaccess.php";
     require "src/controller/categorie_ctl.php";
     require "src/controller/produit_ctl.php";
+    require "src/controller/security_ctl.php";
     require "src/model/dbaccess.php";
     
     function home() {
         $titre = "Shop & Food : Accueil";
         ob_start();
+
 ?>
-       <h1>Shop & Food</h1>
+       <h1>SHOP & FOOD</h1>
 
 <?php
 $content = ob_get_clean();
@@ -64,6 +66,19 @@ require "src/view/template.php";
 
             case 'delProd':
                 deleteProduit();
+            break;
+
+// CONNEXION
+            case 'login':
+                logIn();
+            break;
+
+            case 'valid':
+                valide();
+            break;
+
+            case 'logout':
+                logOut();
             break;
 
 
