@@ -1,5 +1,7 @@
 <?php
-session_status();
+if(session_status()==1){
+  session_start();
+}
 ob_start();
 $titre = 'Produits'
 
@@ -25,19 +27,34 @@ foreach ($resul as $p){
            <td>".$p->getCategory_id()."</td>
            <td>".$p->getQuantity()."</td>
            <td>".$p->getUnit_price().'€'."</td>
-           <td>
-            <a class='btn btn-warning' href='index.php?action=ModifProd&id=".$p->getId_prod()."'>Modifier</a>
-            <a class='btn btn-danger' href='index.php?action=delProd&id=".$p->getId_prod()."'>Supprimer</a>
+           <td>";
+
+           if (isset($_SESSION['status']) && $_SESSION['status'] == 1) {
+
+            echo" <a class='btn btn-warning' href='index.php?action=ModifProd&id=".$p->getId_prod()."'>Modifier</a>";
+            echo" <a class='btn btn-danger' href='index.php?action=delProd&id=".$p->getId_prod()."'>Supprimer</a>
             </td>
-    </tr>";
+            </tr>";
+           }
+           else{
+
+            echo" <a class='btn btn-success' href='index.php?action=addP&id=".$p->getId_prod()."'>Ajouter le Produit</a>";
+           }         
 }
+
 ?>
   </tbody>
 </table>
 
 <?php
-echo"<a class='btn btn-primary' href='index.php?action=addProd'>Ajoutez un nouveau produit</a>";
+if (isset($_SESSION['status']) && $_SESSION['status'] == 1) {
 
+echo"<a class='btn btn-primary' href='index.php?action=addProd'>Ajoutez un nouveau produit</a>";
+}
+else{
+echo"<a class='btn btn-primary' href='index.php?action=panier'>Aller au Panier</a>";
+
+}
 $content = ob_get_clean();
 require "src/view/template.php";
 ?>

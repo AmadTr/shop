@@ -12,7 +12,11 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Bienvenue</a>
+<?php 
+if (isset($_SESSION['status'])) {
+    echo'  <a class="navbar-brand" href="#">Bienvenue '.$_SESSION["firstname"].'</a>';
+}    
+?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,13 +30,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=showProds">PRODUIT</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=panier">PANIER</a>
+                    </li>  
  <?php  
 session_status();
-var_dump($_SESSION['id']);
-    if (isset($_SESSION['id'])) {
+
+    if (isset($_SESSION['status'])) {
         
         
-        if (isset($_SESSION['status']) == 1) {
+        if (($_SESSION['status']) == 1) {
             
             echo "<li class='nav-item'>
             <a class='nav-link' href='index.php?action=showCats'>CATEGORIE</a>
@@ -50,7 +57,7 @@ var_dump($_SESSION['id']);
             <a class="nav-link" href="index.php?action=login">CONNEXION</a>
             </li>';
     }                
-            ?>  
+?>
 </ul>
 </div>
 </div>

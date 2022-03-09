@@ -4,6 +4,7 @@
     require "src/controller/categorie_ctl.php";
     require "src/controller/produit_ctl.php";
     require "src/controller/security_ctl.php";
+    require "src/controller/cart_ctl.php";
     require "src/model/dbaccess.php";
     
     function home() {
@@ -22,12 +23,14 @@ require "src/view/template.php";
 <?php
     // ROUTER
     // ******
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
     if(isset($_GET['action'])){
-
         $action = $_GET['action'];
-
         switch ($action) {
 // CRUD CATEGORIE
+
             case 'home':
                 home();
             break;
@@ -80,8 +83,15 @@ require "src/view/template.php";
             case 'logout':
                 logOut();
             break;
+// PANIER
 
+            case 'panier':
+                panier();
+            break;
 
+            case 'addP':
+                addP($id);
+            break;
             
             default:
                 header("location: index.php?action=home");
