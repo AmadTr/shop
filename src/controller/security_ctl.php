@@ -1,9 +1,6 @@
 <?php 
 session_start();
 require "src/model/user.php";
-// require "src/controller/produit_ctl.php";
-// require "src/controller/categorie_ctl.php";
-
 
 function logIn(){
     require "src/view/users/userForm.php";

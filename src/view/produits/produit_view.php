@@ -1,5 +1,5 @@
 <?php
-if(session_status()==1){
+if(!session_status()){
   session_start();
 }
 ob_start();
@@ -52,7 +52,7 @@ if (isset($_SESSION['status']) && $_SESSION['status'] == 1) {
 echo"<a class='btn btn-primary' href='index.php?action=addProd'>Ajoutez un nouveau produit</a>";
 }
 else{
-echo"<a class='btn btn-primary' href='index.php?action=panier'>Aller au Panier</a>";
+echo"<a class='btn btn-primary' href='index.php?action=showPanier'>Aller au Panier</a>";
 
 }
 $content = ob_get_clean();

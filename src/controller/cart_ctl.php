@@ -1,6 +1,6 @@
 <?php 
 
-if(session_status()==1){
+if(!session_status()){
     session_start();
 }
 
@@ -9,27 +9,56 @@ function panier(){
     require "src/view/panier/panier_view.php";
 }
 
-function addP(){
 
-    // if (!isset($_SESSION['panier'])){ 
-        $prod = getProduit($_GET['id']);
+function addP($id){
+
+    if (!isset($_SESSION['panier'])){ 
 
         $_SESSION['panier'] = [];
+    }  
+     
+    if (!isset($_SESSION['panier'][$id])) {
+            
+        $_SESSION['panier'][$id] = 1;
+    }
 
-        $_SESSION['panier']['nomProd'] = array();
-        $_SESSION['panier']['qteProd'] = 1;
-        $_SESSION['panier']['prixProd'] = array();
-      
-        $_SESSION['panier']['nomProd'] = $prod->getName();
-        $_SESSION['panier']['qteProd'] = 1;
-        $_SESSION['panier']['prixProd'] = $prod->getUnit_price();
+    else{
 
-        require "src/view/panier/panier_view.php";
-
-    // }
-
-
+        $_SESSION['panier'][$id] ++ ;       
+    }
+    showAllProduits();   
 }
 
 
+function qtePlus($id){
 
+    $_SESSION['panier'][$id] ++ ;       
+    panier();
+}
+
+
+function qteMoins($id){
+
+    if($_SESSION['panier'][$id]>1){
+
+        $_SESSION['panier'][$id] -- ;       
+        panier();
+    }
+    else{
+        supProd($id);
+    }
+}
+
+
+function supProd($id){
+
+   unset($_SESSION['panier'][$id]); 
+
+    panier();
+}
+
+function effPanier(){
+
+    unset($_SESSION['panier']);
+    showAllProduits();   
+}

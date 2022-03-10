@@ -31,7 +31,7 @@ if (isset($_SESSION['status'])) {
                         <a class="nav-link" href="index.php?action=showProds">PRODUIT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=panier">PANIER</a>
+                        <a class="nav-link" href="index.php?action=showPanier">PANIER</a>
                     </li>  
  <?php  
 session_status();

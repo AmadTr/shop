@@ -85,16 +85,32 @@ require "src/view/template.php";
             break;
 // PANIER
 
-            case 'panier':
+            case 'showPanier':
                 panier();
             break;
 
             case 'addP':
                 addP($id);
             break;
+
+            case 'qteMoins':
+                qteMoins($id);
+            break;
+
+            case 'qtePlus':
+                qtePlus($id);
+            break;
             
+            case 'supProd':
+                supProd($id);
+            break;
+
+            case 'effPanier':
+                effPanier();
+            break;
+
             default:
-                header("location: index.php?action=home");
+                header("Location: index.php?action=home");
 }
     }
     else {
