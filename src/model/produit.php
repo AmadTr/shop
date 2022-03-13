@@ -19,8 +19,7 @@ class Produit {
     public function setQuantity($quantity) {$this->quantity = $quantity;}
 
     public function getUnit_price() {return $this->unit_price;}
-    public function setUnit_price($unit_price) {$this->unit_price = $unit_price;}
-   
+    public function setUnit_price($unit_price) {$this->unit_price = $unit_price;} 
 }
 
 // passer direct l objet de type produit

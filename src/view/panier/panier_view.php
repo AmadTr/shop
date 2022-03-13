@@ -43,7 +43,7 @@ if (isset($_SESSION['panier'])) {
           </tr> 
       </tbody>
     </table>";
-echo "<a class='btn btn-primary' href='index.php?action=addProd'>Commander</a>";
+echo "<a class='btn btn-primary' href='index.php?action=validPanier'>Commander</a>";
 
 }
 else{

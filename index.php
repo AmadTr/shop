@@ -5,6 +5,7 @@
     require "src/controller/produit_ctl.php";
     require "src/controller/security_ctl.php";
     require "src/controller/cart_ctl.php";
+    require "src/controller/order_ctl.php";
     require "src/model/dbaccess.php";
     
     function home() {
@@ -18,9 +19,9 @@
 $content = ob_get_clean();
 require "src/view/template.php";
 }
-?>
 
-<?php
+
+
     // ROUTER
     // ******
     if(isset($_GET['id'])){
@@ -107,6 +108,10 @@ require "src/view/template.php";
 
             case 'effPanier':
                 effPanier();
+            break;
+
+            case 'validPanier':
+                validPanier();
             break;
 
             default:

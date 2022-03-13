@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if(!session_status()){
     session_start();
@@ -24,7 +24,7 @@ function addP($id){
 
     else{
 
-        $_SESSION['panier'][$id] ++ ;       
+        $_SESSION['panier'][$id]++ ;       
     }
     showAllProduits();   
 }
@@ -32,7 +32,7 @@ function addP($id){
 
 function qtePlus($id){
 
-    $_SESSION['panier'][$id] ++ ;       
+    $_SESSION['panier'][$id]++ ;       
     panier();
 }
 
@@ -41,7 +41,7 @@ function qteMoins($id){
 
     if($_SESSION['panier'][$id]>1){
 
-        $_SESSION['panier'][$id] -- ;       
+        $_SESSION['panier'][$id]-- ;       
         panier();
     }
     else{
@@ -61,4 +61,14 @@ function effPanier(){
 
     unset($_SESSION['panier']);
     showAllProduits();   
+}
+
+function validPanier(){
+
+    if(isset($_SESSION['id'])){
+        addCmd();
+    }
+    else{
+        logIn();
+    }
 }
